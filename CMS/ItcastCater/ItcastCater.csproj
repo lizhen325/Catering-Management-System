@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCategory.Designer.cs">
+      <DependentUpon>FrmCategory.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,13 +70,35 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmMemberInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMemberInfo.Designer.cs">
+      <DependentUpon>FrmMemberInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUpdateMemberInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUpdateMemberInfo.Designer.cs">
+      <DependentUpon>FrmUpdateMemberInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MyEventArgs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmCategory.resx">
+      <DependentUpon>FrmCategory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMemberInfo.resx">
+      <DependentUpon>FrmMemberInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUpdateMemberInfo.resx">
+      <DependentUpon>FrmUpdateMemberInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
