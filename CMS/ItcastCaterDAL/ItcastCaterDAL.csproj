@@ -43,8 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryInfoDLL.cs" />
     <Compile Include="MemberInfoDAL.cs" />
     <Compile Include="MemberTypeDAL.cs" />
+    <Compile Include="ProductInfoDLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqliteHelper.cs" />
     <Compile Include="UserInfoDAL.cs" />
