@@ -47,7 +47,7 @@ namespace ItcastCater.DAL
             //}
 
             ct.CatName = dr["CatName"].ToString();
-            ct.CatNum = dr["CatNum"].ToString();
+            ct.CatNum = Convert.ToInt32(dr["CatNum"]);
             ct.Remark = dr["Remark"].ToString();
             return ct;
         }
@@ -73,7 +73,7 @@ namespace ItcastCater.DAL
                                  };
             List<SQLiteParameter> list = new List<SQLiteParameter>();
             list.AddRange(ps);
-            if(temp==1)
+            if(temp == 1)
             {
                 //Insert
                 list.Add(new SQLiteParameter("@DelFlag", ct.DelFlag));

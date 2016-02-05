@@ -28,10 +28,10 @@ namespace ItcastCater.BLL
                 //insert
                 r = dal.AddCategoryInfo(ct);
             }
-            else if(temp ==2)
+            else if(temp == 2)
             {
                 //Update
-                r = dal.AddCategoryInfo(ct);
+                r = dal.UpdateCategoryInfo(ct);
             }
             return r > 0;
         }

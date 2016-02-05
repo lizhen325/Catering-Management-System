@@ -22,10 +22,24 @@ namespace ItcastCater
        
         private void FrmCategory_Load(object sender, EventArgs e)
         {
-
+            //加载所有的商品类别
             LoadCategoryInfoByDelFlag(0);
+            //加载所有的产品
             LoadProductInfoByDelFlag(0);
+            //加载所有的类别
+            LoadCategoryInfoByDelFlagToCmb(0);
 
+        }
+
+        private void LoadCategoryInfoByDelFlagToCmb(int p)
+        {
+            CategoryInfoBLL bal = new CategoryInfoBLL();
+            dgvCategoryInfo.AutoGenerateColumns = false;
+            List<CategoryInfo> list = bal.GetCategoryInfoByDelFlag(p);
+            list.Insert(0, new CategoryInfo() { CatId = -1, CatName = "请选择" });
+            cmbCategory.DataSource = list;
+            cmbCategory.DisplayMember = "CatName";
+            cmbCategory.ValueMember = "CatId";
         }
 
         private void LoadProductInfoByDelFlag(int p)
@@ -105,7 +119,103 @@ namespace ItcastCater
             LoadCategoryInfoByDelFlag(0);
         }
 
+        private void btnDeletePro_Click(object sender, EventArgs e)
+        {
+            if(dgvProductInfo.SelectedRows.Count>0)
+            {
+                //提示
+                if(DialogResult.OK == MessageBox.Show("真的要删除吗","删除",MessageBoxButtons.OKCancel,MessageBoxIcon.Question))
+                {
+                    int id = Convert.ToInt32(dgvProductInfo.SelectedRows[0].Cells[0].Value.ToString());
+                    ProductInfoBLL bll = new ProductInfoBLL();
+                    if(bll.DeleteProductInfoByProId(id))
+                    {
+                        MessageBox.Show("操作成功");
+                    }
+                    else
+                    {
+                        MessageBox.Show("操作失败");
+                    }
+                    LoadProductInfoByDelFlag(0);
+                    
+                }
+            }
+            else
+            {
+                MessageBox.Show("请选择要删除的行");
+            }
+        }
 
+        public event EventHandler evtFcp;
+
+        //Insert Product
+        private void btnAddPro_Click(object sender, EventArgs e)
+        {
+            InsertOrUpdate(3);
+        }
+
+        //Update Product
+        private void btnUpdatePro_Click(object sender, EventArgs e)
+        {
+            if(dgvProductInfo.SelectedRows.Count>0)
+            {
+                int id = Convert.ToInt32(dgvProductInfo.SelectedRows[0].Cells[0].Value.ToString());
+                ProductInfoBLL bll = new ProductInfoBLL();
+                ProductInfo pro = bll.GetProductInfoById(id);
+                if(pro!=null)
+                {
+                    meaFcp.Obj = pro;
+                    InsertOrUpdate(4);
+                }
+            }
+            else
+            {
+                MessageBox.Show("请选中Product");
+            }
+            
+        }
+        MyEventArgs meaFcp = new MyEventArgs();
+        
+        //表示3---insert，4----Update
+        private void InsertOrUpdate(int p)
+        {
+            FrmChangeProduct fcp = new FrmChangeProduct();
+            //注册事件
+            this.evtFcp += new EventHandler(fcp.SetText);
+            //村标识
+            meaFcp.Temp = p;
+            if(this.evtFcp!=null)
+            {
+                this.evtFcp(this, meaFcp);
+                fcp.FormClosed += new FormClosedEventHandler(fcp_FormClosed);
+                fcp.ShowDialog();
+            }
+        }
+
+        private void fcp_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadProductInfoByDelFlag(0);
+        }
+
+        private void cmbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cmbCategory.SelectedIndex !=0)
+            {
+                int id = Convert.ToInt32(cmbCategory.SelectedValue);
+                ProductInfoBLL bll = new ProductInfoBLL();
+                dgvProductInfo.AutoGenerateColumns = false;
+                dgvProductInfo.DataSource = bll.GetProductInfoByCatId(id);
+                if(dgvProductInfo.SelectedRows.Count>0)
+                {
+                    dgvProductInfo.SelectedRows[0].Selected = false;
+                }
+                
+            }
+            else
+            {
+                LoadProductInfoByDelFlag(0);
+            }
+        }
 
         
     }

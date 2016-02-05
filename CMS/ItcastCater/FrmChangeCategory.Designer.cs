@@ -41,7 +41,7 @@
             // labId
             // 
             this.labId.AutoSize = true;
-            this.labId.Location = new System.Drawing.Point(198, 281);
+            this.labId.Location = new System.Drawing.Point(153, 281);
             this.labId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labId.Name = "labId";
             this.labId.Size = new System.Drawing.Size(0, 17);
@@ -117,7 +117,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(426, 377);
+            this.ClientSize = new System.Drawing.Size(425, 410);
             this.Controls.Add(this.labId);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.txtCRemark);
@@ -127,7 +127,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "FrmChangeCategory";
-            this.Text = "Insert_Or_Update_Product_Category";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Insert Or Update ProductCategory";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -246,6 +246,7 @@
             this.btnUpdatePro.TabIndex = 69;
             this.btnUpdatePro.Text = "修改产品";
             this.btnUpdatePro.UseVisualStyleBackColor = true;
+            this.btnUpdatePro.Click += new System.EventHandler(this.btnUpdatePro_Click);
             // 
             // btnAddPro
             // 
@@ -256,6 +257,7 @@
             this.btnAddPro.TabIndex = 70;
             this.btnAddPro.Text = "增加产品";
             this.btnAddPro.UseVisualStyleBackColor = true;
+            this.btnAddPro.Click += new System.EventHandler(this.btnAddPro_Click);
             // 
             // benDeleteCategory
             // 
@@ -287,6 +289,7 @@
             this.cmbCategory.Name = "cmbCategory";
             this.cmbCategory.Size = new System.Drawing.Size(160, 24);
             this.cmbCategory.TabIndex = 63;
+            this.cmbCategory.SelectedIndexChanged += new System.EventHandler(this.cmbCategory_SelectedIndexChanged);
             // 
             // txtSearch
             // 
@@ -315,6 +318,7 @@
             this.btnDeletePro.TabIndex = 68;
             this.btnDeletePro.Text = "删除产品";
             this.btnDeletePro.UseVisualStyleBackColor = true;
+            this.btnDeletePro.Click += new System.EventHandler(this.btnDeletePro_Click);
             // 
             // FrmCategory
             // 
@@ -335,6 +339,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnDeletePro);
             this.Name = "FrmCategory";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Product Category";
             this.Load += new System.EventHandler(this.FrmCategory_Load);
             this.groupBox2.ResumeLayout(false);

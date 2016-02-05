@@ -32,7 +32,7 @@ namespace ItcastCater
             {
                 CategoryInfo ct = mea.Obj as CategoryInfo;
                 txtCName.Text = ct.CatName;
-                txtCNum.Text = ct.CatNum;
+                txtCNum.Text = ct.CatNum.ToString();
                 txtCRemark.Text = ct.Remark;
                 labId.Text = ct.CatId.ToString();
             }
@@ -44,7 +44,7 @@ namespace ItcastCater
             {
                 CategoryInfo ct = new CategoryInfo();
                 ct.CatName = txtCName.Text;
-                ct.CatNum = txtCNum.Text;
+                ct.CatNum = Convert.ToInt32(txtCNum.Text);
                 ct.Remark = txtCRemark.Text;
                 if(this.Tp == 1)
                 {

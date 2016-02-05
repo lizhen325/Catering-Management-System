@@ -23,9 +23,9 @@ namespace ItcastCater.Model
             get { return _catName; }
             set { _catName = value; }
         }
-        private string _catNum;
+        private int _catNum;
 
-        public string CatNum
+        public int CatNum
         {
             get { return _catNum; }
             set { _catNum = value; }
