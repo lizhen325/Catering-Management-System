@@ -113,7 +113,14 @@ namespace ItcastCater
                 return;
             }
 
+            //desk State
+            if((lv.SelectedItems[0].Tag as DeskInfo).DeskState != 0)
+            {
+                MessageBox.Show("请选择未开单的餐桌");
+                return;
+            }
             //DeskId, DeskName,RoomType, RoomMinimumConsume
+
         }
 
        
