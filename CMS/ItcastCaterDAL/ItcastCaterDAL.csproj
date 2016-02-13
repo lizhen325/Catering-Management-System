@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryInfoDLL.cs" />
+    <Compile Include="DeskInfoDAL.cs" />
     <Compile Include="MemberInfoDAL.cs" />
     <Compile Include="MemberTypeDAL.cs" />
     <Compile Include="ProductInfoDLL.cs" />

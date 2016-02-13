@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryInfo.cs" />
+    <Compile Include="DeskInfo.cs" />
     <Compile Include="MemberInfo.cs" />
     <Compile Include="MemberType.cs" />
     <Compile Include="ProductInfo.cs" />

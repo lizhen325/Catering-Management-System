@@ -31,6 +31,17 @@ namespace ItcastCater
             fc.ShowDialog();
         }
 
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        
         
     }
 }
