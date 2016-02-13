@@ -101,9 +101,22 @@ namespace ItcastCater
             }
         }
 
-
-
-
         
+        private void btn_Bill_Click(object sender, EventArgs e)
+        {
+            TabPage tp = tabControl1.SelectedTab;
+            ListView lv = tp.Controls[0] as ListView;
+
+            if (lv.SelectedItems.Count <= 0)
+            {
+                MessageBox.Show("请选中");
+                return;
+            }
+
+            //DeskId, DeskName,RoomType, RoomMinimumConsume
+        }
+
+       
+
     }
 }

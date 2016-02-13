@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_Bill = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.btnMember = new System.Windows.Forms.Button();
@@ -66,15 +66,16 @@
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
-            // button1
+            // btn_Bill
             // 
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(29, 0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 92);
-            this.button1.TabIndex = 1;
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_Bill.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btn_Bill.Image = ((System.Drawing.Image)(resources.GetObject("btn_Bill.Image")));
+            this.btn_Bill.Location = new System.Drawing.Point(29, 0);
+            this.btn_Bill.Name = "btn_Bill";
+            this.btn_Bill.Size = new System.Drawing.Size(110, 92);
+            this.btn_Bill.TabIndex = 1;
+            this.btn_Bill.UseVisualStyleBackColor = true;
+            this.btn_Bill.Click += new System.EventHandler(this.btn_Bill_Click);
             // 
             // button2
             // 
@@ -205,7 +206,7 @@
             this.Controls.Add(this.btnMember);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_Bill);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmMain";
@@ -227,7 +228,7 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_Bill;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnMember;
