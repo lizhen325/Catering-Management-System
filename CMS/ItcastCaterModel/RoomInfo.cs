@@ -8,7 +8,7 @@ namespace ItcastCater.Model
 {
     //RoomInfo table 
 
-    //RoomId, RoomName, RoomType, RoomMinimumConsumer
+    //RoomId, RoomName, RoomType, RoomMinimumConsume
     //RoomMaxConsumer, IsDefault, DelFlag, SubTime, SubBy
     public class RoomInfo
     {
@@ -33,12 +33,12 @@ namespace ItcastCater.Model
             get { return _roomType; }
             set { _roomType = value; }
         }
-        private decimal _roomMinimumConsumer;
+        private decimal _roomMinimumConsume;
 
-        public decimal RoomMinimumConsumer
+        public decimal RoomMinimumConsume
         {
-            get { return _roomMinimumConsumer; }
-            set { _roomMinimumConsumer = value; }
+            get { return _roomMinimumConsume; }
+            set { _roomMinimumConsume = value; }
         }
         private int _roomMaxConsumer;
 
