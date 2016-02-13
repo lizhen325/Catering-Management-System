@@ -101,7 +101,9 @@ namespace ItcastCater
             }
         }
 
-        
+        public event EventHandler evtFBI;
+       
+
         private void btn_Bill_Click(object sender, EventArgs e)
         {
             TabPage tp = tabControl1.SelectedTab;
@@ -119,8 +121,28 @@ namespace ItcastCater
                 MessageBox.Show("请选择未开单的餐桌");
                 return;
             }
-            //DeskId, DeskName,RoomType, RoomMinimumConsume
+            MyEventArgs mea = new MyEventArgs();
+            mea.Obj = lv.SelectedItems[0].Tag;
 
+            FrmBilling fb = new FrmBilling();
+            
+            //RoomType, RoomMinimumConsume
+            mea.Name = (tp.Tag as RoomInfo).RoomName;
+            mea.Money = (tp.Tag as RoomInfo).RoomMinimumConsume;
+
+            this.evtFBI += new EventHandler(fb.SetText);
+            if(this.evtFBI != null)
+            {
+                this.evtFBI(this, mea);
+                fb.FormClosed += new FormClosedEventHandler(fbi_FormClosed);
+                fb.ShowDialog();
+            }
+        }
+
+        //Load bill button closed
+        private void fbi_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            LoadDeskInfoByRoomIdAndByTabPageIndex(tabControl1.SelectedTab);
         }
 
        

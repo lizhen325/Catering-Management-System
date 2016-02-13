@@ -20,5 +20,17 @@ namespace ItcastCater.BLL
         {
             return dal.GetAllDeskInfoByRoom(roomId);
         }
+
+        /// <summary>
+        /// change desk state
+        /// </summary>
+        /// <param name="deskId"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        /// 
+        public bool UpdateDeskStateByDeskId(int deskId,int state)
+        {
+            return dal.UpdateDeskStateByDeskId(deskId, state) > 0;
+        }
     }
 }

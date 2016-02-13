@@ -44,5 +44,17 @@ namespace ItcastCater.DAL
             d.SubTime = Convert.ToDateTime(dr["SubTime"]);
             return d;
         }
+
+        /// <summary>
+        /// change desk state
+        /// </summary>
+        /// <param name="deskId"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
+        public int UpdateDeskStateByDeskId(int deskId,int state)
+        {
+            string sql = "update DeskInfo set DeskState=@DeskState where DelFlag=0 and DeskId=@DeskId";
+            return SqliteHelper.ExecuteNonQuery(sql, new SQLiteParameter("@DeskState", state), new SQLiteParameter("@DeskId", deskId));
+        }
     }
 }
