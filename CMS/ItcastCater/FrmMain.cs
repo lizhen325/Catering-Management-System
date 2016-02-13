@@ -38,7 +38,19 @@ namespace ItcastCater
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
+            LoadRoomInfoByDelFlag(0);
+        }
 
+        private void LoadRoomInfoByDelFlag(int p)
+        {
+            RoomInfoBLL bll = new RoomInfoBLL();
+            List<RoomInfo> listRoom = bll.GetAllRoomInfoByDelFlag(p);
+            for(int i=0; i<listRoom.Count; i++)
+            {
+                TabPage tp = new TabPage();
+                tp.Text = listRoom[i].RoomName;
+                tabControl1.TabPages.Add(tp);
+            }
         }
 
         

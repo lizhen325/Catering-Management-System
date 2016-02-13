@@ -40,9 +40,9 @@ namespace ItcastCater.DAL
         {
             RoomInfo r = new RoomInfo();
             r.IsDefault = Convert.ToInt32(dr["IsDefault"]);
-            r.RoomId = Convert.ToInt32(dr[""]);
+            r.RoomId = Convert.ToInt32(dr["RoomId"]);
             r.RoomMaxConsumer = Convert.ToInt32(dr["RoomMaxConsumer"]);
-            r.RoomMinimumConsume = Convert.ToDecimal(dr["RoomMinimumConsume"]);
+            //r.RoomMinimumConsume = Convert.ToDecimal(dr["RoomMinimumConsume"]);
             r.RoomName = dr["RoomName"].ToString();
             r.RoomType = Convert.ToInt32(dr["RoomType"]);
             r.SubBy = Convert.ToInt32(dr["SubBy"]);
