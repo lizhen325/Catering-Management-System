@@ -126,5 +126,32 @@ namespace ItcastCater.DAL
             return list;
 
         }
+
+        /// <summary>
+        /// 根据编号查询产品
+        /// </summary>
+        /// <param name="proNum"></param>
+        /// <returns></returns>
+        public List<ProductInfo> GetProductInfoByProNum(string proNum)
+        {
+            string sql = "select * from ProductInfo where DelFlag=0 and ProNum like @ProNum";
+            DataTable dt = SqliteHelper.ExecuteTable(sql, new SQLiteParameter("@ProNum", "%" + proNum + "%"));
+            List<ProductInfo> list = new List<ProductInfo>();
+            if(dt.Rows.Count > 0)
+            {
+                foreach(DataRow dr in dt.Rows)
+                {
+                    list.Add(RowToProductInfo(dr));
+                }
+            }
+            
+            return list;
+        }
+
+        public object GetProductInfoCountByCatId(int catId)
+        {
+            string sql = "select count(*) from ProductInfo where DelFlag=0 and CatId="+catId;
+            return SqliteHelper.ExecuteSclar(sql);
+        }
     }
 }

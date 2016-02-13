@@ -50,5 +50,26 @@ namespace ItcastCater.BLL
         {
             return dal.GetProductInfoByCatId(catid);
         }
+
+        /// <summary>
+        /// 根据编号查询产品
+        /// </summary>
+        /// <param name="proNum"></param>
+        /// <returns></returns>
+        /// 
+        public List<ProductInfo> GetProductInfoByProNum(string proNum)
+        {
+            return dal.GetProductInfoByProNum(proNum);
+        }
+
+        /// <summary>
+        /// 根据商品类别id查询该类别下有没有产品
+        /// </summary>
+        /// <param name="catId"></param>
+        /// <returns></returns>
+        public int GetProductInfoCountByCatId(int catId)
+        {
+            return Convert.ToInt32(dal.GetProductInfoCountByCatId(catId));
+        }
     }
 }

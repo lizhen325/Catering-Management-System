@@ -87,5 +87,16 @@ namespace ItcastCater.DAL
             }
             return SqliteHelper.ExecuteNonQuery(sql, list.ToArray());
         }
+
+        /// <summary>
+        /// 根据商品类别的id删除该类别
+        /// </summary>
+        /// <param name="catId"></param>
+        /// <returns></returns>
+        public int SoftDeleteCategoryInfoByCatId(int catId)
+        {
+            string sql = "update CategoryInfo set DelFlag=1 where CatId=" + catId;
+            return SqliteHelper.ExecuteNonQuery(sql);
+        }
     }
 }

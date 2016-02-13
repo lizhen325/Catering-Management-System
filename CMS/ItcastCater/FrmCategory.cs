@@ -63,7 +63,27 @@ namespace ItcastCater
 
         private void benDeleteCategory_Click(object sender, EventArgs e)
         {
-           
+            if(dgvCategoryInfo.SelectedRows.Count<=0)
+            {
+                MessageBox.Show("请选择要删除的行");
+                return;
+            }
+            if(DialogResult.OK == MessageBox.Show("删除类别","Are you sure?",MessageBoxButtons.OKCancel,MessageBoxIcon.Question))
+            {
+                int id = Convert.ToInt32(dgvCategoryInfo.SelectedRows[0].Cells[0].Value.ToString());
+                ProductInfoBLL bll = new ProductInfoBLL();
+                int r = bll.GetProductInfoCountByCatId(id);
+                if(r > 0)
+                {
+                    MessageBox.Show("该类别有产品，不能删除");
+                    return;
+                }
+                CategoryInfoBLL cbll = new CategoryInfoBLL();
+                string msg = cbll.SoftDeleteCategoryInfoByCatId(id) ? "操作成功" : "操作失败";
+                MessageBox.Show(msg);
+                LoadCategoryInfoByDelFlag(0);
+            }
+            
         }
 
         //Insert ProductCategory
@@ -216,6 +236,22 @@ namespace ItcastCater
                 LoadProductInfoByDelFlag(0);
             }
         }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            //获取文本框的内容
+            string txt = txtSearch.Text;
+            //传到bll层
+            ProductInfoBLL bll = new ProductInfoBLL();
+           List<ProductInfo> list = bll.GetProductInfoByProNum(txt);
+            //集合绑定到dgv上
+           dgvProductInfo.AutoGenerateColumns = false;
+           dgvProductInfo.DataSource = list;
+            if(dgvProductInfo.SelectedRows.Count>0)
+            {
+                dgvProductInfo.SelectedRows[0].Selected = false;
+            }
+         }
 
         
     }

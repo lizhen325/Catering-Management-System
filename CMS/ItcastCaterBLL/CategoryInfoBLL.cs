@@ -35,5 +35,16 @@ namespace ItcastCater.BLL
             }
             return r > 0;
         }
+
+        /// <summary>
+        /// 根据商品类别的id删除该类别
+        /// </summary>
+        /// <param name="catId"></param>
+        /// <returns></returns>
+        /// 
+        public bool SoftDeleteCategoryInfoByCatId(int catId)
+        {
+            return dal.SoftDeleteCategoryInfoByCatId(catId) > 0;
+        }
     }
 }
