@@ -22,6 +22,9 @@ namespace ItcastCater
         {
             MyEventArgs mea = e as MyEventArgs;
             labDeskName.Text = mea.Name;
+
+            //orderId
+            labOrderId.Text = mea.Temp.ToString();
         }
 
         private void FrmAddMoney_Load(object sender, EventArgs e)
@@ -31,6 +34,25 @@ namespace ItcastCater
 
             //Load
             LoadCategoryInfoByDelFlag(0);
+
+            //load order
+            LoadROrderInfoProductByOrderId(Convert.ToInt32(labOrderId.Text));
+        }
+
+        private void LoadROrderInfoProductByOrderId(int p)
+        {
+            R_OrderInfo_ProductBLL bll = new R_OrderInfo_ProductBLL();
+            dgvROrderProduct.AutoGenerateColumns = false;
+            dgvROrderProduct.DataSource = bll.GetROrderProduct(p);
+            if(dgvROrderProduct.SelectedRows.Count>0)
+            {
+                dgvROrderProduct.SelectedRows[0].Selected = false;
+            }
+
+            //
+            R_OrderInfo_Product rop = bll.GetMoneyAndCount(p);
+            labSumMoney.Text = rop.MONEY.ToString();
+            labCount.Text = rop.CT.ToString();
         }
 
         private void LoadCategoryInfoByDelFlag(int p)
@@ -62,5 +84,31 @@ namespace ItcastCater
             dgvProduct.DataSource = bll.GetProductInfoByDelFlag(p);
             dgvProduct.SelectedRows[0].Selected = false;
         }
+
+        //start order with cell double click event
+        private void dgvProduct_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+                int proId = Convert.ToInt32(dgvProduct.SelectedRows[0].Cells[0].Value.ToString());
+                R_OrderInfo_Product rop = new R_OrderInfo_Product();
+                rop.OrderId = Convert.ToInt32(labOrderId.Text);
+                rop.ProId = proId;
+                rop.DelFlag = 0;
+                rop.SubTime = System.DateTime.Now;
+                rop.State = 0;
+                if(string.IsNullOrEmpty(txtCount.Text) || txtCount.Text=="0" || txtCount.Text=="1")
+                {
+                    rop.UnitCount = 1;
+                }
+                else
+                {
+                    rop.UnitCount = Convert.ToInt32(txtCount.Text);
+                }
+                R_OrderInfo_ProductBLL bll = new R_OrderInfo_ProductBLL();
+                string msg = bll.AddROrderInfoProduct(rop) ? "成功" : "失败";
+                LoadROrderInfoProductByOrderId(Convert.ToInt32(rop.OrderId));
+         }
+            
+        
     }
 }

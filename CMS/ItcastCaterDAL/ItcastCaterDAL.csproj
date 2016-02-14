@@ -51,6 +51,7 @@
     <Compile Include="ProductInfoDLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoomInfoDAL.cs" />
+    <Compile Include="R_OrderInfo_ProcutDAL.cs" />
     <Compile Include="R_Order_DeskDAL.cs" />
     <Compile Include="SqliteHelper.cs" />
     <Compile Include="UserInfoDAL.cs" />

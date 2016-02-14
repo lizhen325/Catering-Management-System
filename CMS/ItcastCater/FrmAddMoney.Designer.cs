@@ -76,7 +76,7 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.labDeskId = new System.Windows.Forms.Label();
+            this.labOrderId = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -145,6 +145,7 @@
             this.dgvProduct.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvProduct.Size = new System.Drawing.Size(476, 491);
             this.dgvProduct.TabIndex = 0;
+            this.dgvProduct.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProduct_CellDoubleClick);
             // 
             // Column6
             // 
@@ -575,7 +576,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.labDeskId);
+            this.groupBox3.Controls.Add(this.labOrderId);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Location = new System.Drawing.Point(8, 36);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
@@ -585,15 +586,15 @@
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             // 
-            // labDeskId
+            // labOrderId
             // 
-            this.labDeskId.AutoSize = true;
-            this.labDeskId.Location = new System.Drawing.Point(348, 72);
-            this.labDeskId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.labDeskId.Name = "labDeskId";
-            this.labDeskId.Size = new System.Drawing.Size(0, 17);
-            this.labDeskId.TabIndex = 1;
-            this.labDeskId.Visible = false;
+            this.labOrderId.AutoSize = true;
+            this.labOrderId.Location = new System.Drawing.Point(348, 72);
+            this.labOrderId.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labOrderId.Name = "labOrderId";
+            this.labOrderId.Size = new System.Drawing.Size(0, 17);
+            this.labOrderId.TabIndex = 1;
+            this.labOrderId.Visible = false;
             // 
             // label1
             // 
@@ -688,7 +689,7 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label labDeskId;
+        private System.Windows.Forms.Label labOrderId;
         private System.Windows.Forms.Label label1;
     }
 }

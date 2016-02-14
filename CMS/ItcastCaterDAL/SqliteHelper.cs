@@ -64,7 +64,7 @@ namespace ItcastCater.DAL
         /// <param name="sql">sql语句</param>
         /// <param name="ps">sql语句参数</param>
         /// <returns>多行多列</returns>
-        public static SQLiteDataReader ExecuteReader(string sql, SQLiteParameter[] ps)
+        public static SQLiteDataReader ExecuteReader(string sql, params SQLiteParameter[] ps)
         {
             SQLiteConnection con = new SQLiteConnection(str);
             using(SQLiteCommand cmd = new SQLiteCommand(sql,con))
