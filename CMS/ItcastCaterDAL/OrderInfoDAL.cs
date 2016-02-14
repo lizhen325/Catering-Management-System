@@ -40,5 +40,17 @@ namespace ItcastCater.DAL
             string sql = "select OrderInfo.OrderId from R_Order_Desk inner join OrderInfo on R_Order_Desk.OrderId =OrderInfo.OrderId where OrderInfo.OrderState=1 and DeskId=" + deskId;
             return SqliteHelper.ExecuteSclar(sql);
         }
+
+        /// <summary>
+        /// update Money based on orderId and consume
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <param name="money"></param>
+        /// <returns></returns>
+        public int UpdateMoney(int orderId,decimal money)
+        {
+            string sql = "update OrderInfo set OrderMoney=@OrderMoney where OrderId=@OrderId and DelFlag=0";
+            return SqliteHelper.ExecuteNonQuery(sql, new SQLiteParameter("@OrderMoney", money), new SQLiteParameter("@OrderId", orderId));
+        }
     }
 }

@@ -152,6 +152,16 @@ namespace ItcastCater
                 MessageBox.Show("请选择要取消的order");
             }
         }
+
+        //
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            OrderInfoBLL bll = new OrderInfoBLL();
+            if(!string.IsNullOrEmpty(labSumMoney.Text)&&labSumMoney.Text !="0")
+            {
+                bll.UpdateMoney(Convert.ToDecimal(labSumMoney.Text),Convert.ToInt32(labOrderId.Text));
+            }
+        }
             
         
     }

@@ -32,5 +32,17 @@ namespace ItcastCater.BLL
         {
             return Convert.ToInt32(dal.GetOrderIdByDeskId(deskId));
         }
+
+        /// <summary>
+        /// update Money based on orderId and consume
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <param name="money"></param>
+        /// <returns></returns>
+        /// 
+        public void UpdateMoney(decimal money, int orderId)
+        {
+            dal.UpdateMoney(orderId, money);
+        }
     }
 }
