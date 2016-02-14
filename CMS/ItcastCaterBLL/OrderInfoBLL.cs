@@ -21,5 +21,16 @@ namespace ItcastCater.BLL
         {
             return Convert.ToInt32(dal.AddOrderInfo(order));
         }
+
+        /// <summary>
+        /// 根据餐桌的id查找该餐桌正在使用订单id
+        /// </summary>
+        /// <param name="deskId"></param>
+        /// <returns></returns>
+        /// 
+        public int GetOrderIdByDeskId(int deskId)
+        {
+            return Convert.ToInt32(dal.GetOrderIdByDeskId(deskId));
+        }
     }
 }

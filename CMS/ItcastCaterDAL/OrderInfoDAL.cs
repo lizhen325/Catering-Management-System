@@ -18,7 +18,7 @@ namespace ItcastCater.DAL
         /// <returns></returns>
         public object AddOrderInfo(OrderInfo order)
         {
-            string sql = "insert into OrderInfo(SubTime,Remark,OrderState,DelFlag,SubBy,OrderMoney) values(@SubTime,@Remark,@OrderState,@DelFlag,@SubBy,@OrderMoney);select last_last .rowId";
+            string sql = "insert into OrderInfo(SubTime,Remark,OrderState,DelFlag,SubBy,OrderMoney) values(@SubTime,@Remark,@OrderState,@DelFlag,@SubBy,@OrderMoney);select last_insert_rowId()";
             SQLiteParameter[] ps = {
                                       new SQLiteParameter("@SubTime",order.SubTime),
                                       new SQLiteParameter("@Remark",order.Remark),
@@ -28,6 +28,17 @@ namespace ItcastCater.DAL
                                       new SQLiteParameter("@OrderMoney",order.OrderMoney)
                                   };
             return SqliteHelper.ExecuteSclar(sql, ps);
+        }
+
+        /// <summary>
+        /// 根据餐桌的id查找该餐桌正在使用订单id
+        /// </summary>
+        /// <param name="deskId"></param>
+        /// <returns></returns>
+        public object GetOrderIdByDeskId(int deskId)
+        {
+            string sql = "select OrderInfo.OrderId from R_Order_Desk inner join OrderInfo on R_Order_Desk.OrderId =OrderInfo.OrderId where OrderInfo.OrderState=1 and DeskId=" + deskId;
+            return SqliteHelper.ExecuteSclar(sql);
         }
     }
 }

@@ -145,6 +145,44 @@ namespace ItcastCater
             LoadDeskInfoByRoomIdAndByTabPageIndex(tabControl1.SelectedTab);
         }
 
+        //增加消费
+        public event EventHandler evtFrmMoney;
+        private void btnMoney_Click(object sender, EventArgs e)
+        {
+            TabPage tp = tabControl1.SelectedTab;
+            ListView lv = tp.Controls[0] as ListView;
+
+            if (lv.SelectedItems.Count <= 0)
+            {
+                MessageBox.Show("请选中");
+                return;
+            }
+
+            //desk State
+            if ((lv.SelectedItems[0].Tag as DeskInfo).DeskState != 1)
+            {
+                MessageBox.Show("请选择要开单的餐桌");
+                return;
+            }
+
+            //注册事件
+            FrmAddMoney fam = new FrmAddMoney();
+            this.evtFrmMoney += new EventHandler(fam.SetText);
+            MyEventArgs mea = new MyEventArgs();
+            mea.Name = (lv.SelectedItems[0].Tag as DeskInfo).DeskName;
+            OrderInfoBLL bll = new OrderInfoBLL();
+            mea.Temp = bll.GetOrderIdByDeskId((lv.SelectedItems[0].Tag as DeskInfo).DeskId);
+            //窗体传值
+            if(this.evtFrmMoney != null)
+            {
+                this.evtFrmMoney(this, mea);
+                fam.FormClosed += new FormClosedEventHandler(fbi_FormClosed);
+                fam.ShowDialog();
+            }
+        }
+
+      
+
        
 
     }
