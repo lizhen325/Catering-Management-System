@@ -252,19 +252,19 @@
             this.toolStripMenuItem1,
             this.toolStripMenuItem2});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(117, 56);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(111, 52);
             this.contextMenuStrip1.Text = "删除";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(116, 26);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(110, 24);
             this.toolStripMenuItem1.Text = "删除";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(116, 26);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(110, 24);
             this.toolStripMenuItem2.Text = "更新";
             // 
             // label6
@@ -614,6 +614,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "FrmAddMoney";
             this.Text = "FrmAddMoney";
+            this.Load += new System.EventHandler(this.FrmAddMoney_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProduct)).EndInit();
