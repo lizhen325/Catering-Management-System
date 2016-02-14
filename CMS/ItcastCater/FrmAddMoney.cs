@@ -136,6 +136,22 @@ namespace ItcastCater
                 dgvProduct.SelectedRows[0].Selected = false;
             }
         }
+
+        private void btnDeleteRorderPro_Click(object sender, EventArgs e)
+        {
+            if(dgvROrderProduct.SelectedRows.Count > 0)
+            {
+                int id = Convert.ToInt32(dgvROrderProduct.SelectedRows[0].Cells[0].Value.ToString());
+                R_OrderInfo_ProductBLL bll = new R_OrderInfo_ProductBLL();
+                string msg = bll.SoftDeletROrderProName(id) ? "退菜成功" : "退菜失败";
+                MessageBox.Show(msg);
+                LoadROrderInfoProductByOrderId(Convert.ToInt32(labOrderId.Text));
+            }
+            else
+            {
+                MessageBox.Show("请选择要取消的order");
+            }
+        }
             
         
     }

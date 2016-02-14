@@ -44,5 +44,16 @@ namespace ItcastCater.BLL
         {
             return dal.AddROrderInfoProduct(rop) > 0;
         }
+
+        /// <summary>
+        /// cancel order
+        /// </summary>
+        /// <param name="rOrderId"></param>
+        /// <returns></returns>
+        /// 
+        public bool SoftDeletROrderProName(int rOrderProId)
+        {
+            return dal.SoftDeleteROrderProName(rOrderProId) > 0;
+        }
     }
 }

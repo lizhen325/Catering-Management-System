@@ -391,6 +391,7 @@
             this.btnDeleteRorderPro.TabIndex = 0;
             this.btnDeleteRorderPro.Text = "退菜";
             this.btnDeleteRorderPro.UseVisualStyleBackColor = true;
+            this.btnDeleteRorderPro.Click += new System.EventHandler(this.btnDeleteRorderPro_Click);
             // 
             // groupBox2
             // 

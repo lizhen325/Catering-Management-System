@@ -12,6 +12,16 @@ namespace ItcastCater.DAL
     public class R_OrderInfo_ProcutDAL
     {
         /// <summary>
+        /// cancel order
+        /// </summary>
+        /// <param name="rOrderId"></param>
+        /// <returns></returns>
+        public int SoftDeleteROrderProName(int rOrderProId)
+        {
+            string sql = "update R_OrderInfo_Product set DelFlag=1 where ROrderProId=@ROrderProId";
+            return SqliteHelper.ExecuteNonQuery(sql, new SQLiteParameter("@ROrderProId", rOrderProId));
+        }
+        /// <summary>
         /// Add order in product
         /// </summary>
         /// <param name="rop"></param>
