@@ -108,6 +108,34 @@ namespace ItcastCater
                 string msg = bll.AddROrderInfoProduct(rop) ? "成功" : "失败";
                 LoadROrderInfoProductByOrderId(Convert.ToInt32(rop.OrderId));
          }
+
+        //search for id and alphaet
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            if(string.IsNullOrEmpty(txtSearch.Text))
+            {
+                LoadProductInfoByDelFlag(0);
+                return;
+            }
+            int n = 0;
+            if(char.IsLetter(txtSearch.Text[0]))
+            {
+                //the first text is alphaet
+                n = 1;
+            }
+            else
+            {
+                //the first is number
+                n = 2;
+            }
+            ProductInfoBLL bll = new ProductInfoBLL();
+            dgvProduct.AutoGenerateColumns = false;
+            dgvProduct.DataSource = bll.GetProductInfoBySpellOrNum(txtSearch.Text, n);
+            if(dgvProduct.SelectedRows.Count > 0)
+            {
+                dgvProduct.SelectedRows[0].Selected = false;
+            }
+        }
             
         
     }

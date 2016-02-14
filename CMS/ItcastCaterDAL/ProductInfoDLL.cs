@@ -153,5 +153,35 @@ namespace ItcastCater.DAL
             string sql = "select count(*) from ProductInfo where DelFlag=0 and CatId="+catId;
             return SqliteHelper.ExecuteSclar(sql);
         }
+
+        /// <summary>
+        /// search based on alphaet or id
+        /// </summary>
+        /// <param name="num"></param>
+        /// <param name="temp"></param>
+        /// <returns></returns>
+        public List<ProductInfo> GetProductInfoBySpellOrNum(string num, int temp)
+        {
+            string sql = "select * from ProductInfo where DelFlag=0";
+            if(temp == 1)
+            {
+                //alphaet
+                sql += " and ProSpell like @ProSpell";
+            }
+            else if(temp == 2)
+            {
+                sql += " and ProNum like @ProSpell";
+            }
+            List<ProductInfo> list = new List<ProductInfo>();
+            DataTable dt = SqliteHelper.ExecuteTable(sql, new SQLiteParameter("ProSpell","%"+ num + "%"));
+            if(dt.Rows.Count > 0)
+            {
+                foreach(DataRow dr in dt.Rows)
+                {
+                    list.Add(RowToProductInfo(dr));
+                }
+            }
+            return list;
+        }
     }
 }

@@ -71,5 +71,17 @@ namespace ItcastCater.BLL
         {
             return Convert.ToInt32(dal.GetProductInfoCountByCatId(catId));
         }
+
+        /// <summary>
+        /// search based on alphaet or id
+        /// </summary>
+        /// <param name="num"></param>
+        /// <param name="temp"></param>
+        /// <returns></returns>
+        /// 
+        public List<ProductInfo> GetProductInfoBySpellOrNum(string num, int temp)
+        {
+            return dal.GetProductInfoBySpellOrNum(num, temp);
+        }
     }
 }
