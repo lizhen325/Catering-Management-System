@@ -52,5 +52,17 @@ namespace ItcastCater.DAL
             string sql = "update OrderInfo set OrderMoney=@OrderMoney where OrderId=@OrderId and DelFlag=0";
             return SqliteHelper.ExecuteNonQuery(sql, new SQLiteParameter("@OrderMoney", money), new SQLiteParameter("@OrderId", orderId));
         }
+
+        /// <summary>
+        /// get sum money based on orderId
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        public object GetSumMoney(int orderId)
+        {
+            string sql = "select OrderMoney from OrderInfo where OrderId=@OrderId and OrderState=1 and DelFlag=0";
+            return SqliteHelper.ExecuteSclar(sql, new SQLiteParameter("@OrderId", orderId));
+
+        }
     }
 }

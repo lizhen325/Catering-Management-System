@@ -181,6 +181,38 @@ namespace ItcastCater
             }
         }
 
+        public event EventHandler evtFBalance;
+        //Pay
+        private void btnPay_Click(object sender, EventArgs e)
+        {
+            TabPage tp = tabControl1.SelectedTab;
+            ListView lv = tp.Controls[0] as ListView;
+
+            if (lv.SelectedItems.Count <= 0)
+            {
+                MessageBox.Show("请选中");
+                return;
+            }
+
+            //desk State
+            if ((lv.SelectedItems[0].Tag as DeskInfo).DeskState != 1)
+            {
+                MessageBox.Show("请选择要开单的餐桌");
+                return;
+            }
+            
+            FrmBalance fb = new FrmBalance();
+            this.evtFBalance += new EventHandler(fb.SetText);
+            MyEventArgs meaFB = new MyEventArgs();
+            meaFB.Obj = lv.SelectedItems[0].Tag;
+            if(this.evtFBalance != null)
+            {
+                this.evtFBalance(this, meaFB);
+                fb.ShowDialog();
+            }
+            
+        }
+
       
 
        

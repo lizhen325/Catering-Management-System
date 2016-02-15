@@ -33,7 +33,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.btn_Bill = new System.Windows.Forms.Button();
             this.btnMoney = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnPay = new System.Windows.Forms.Button();
             this.btnMember = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -88,15 +88,16 @@
             this.btnMoney.UseVisualStyleBackColor = true;
             this.btnMoney.Click += new System.EventHandler(this.btnMoney_Click);
             // 
-            // button3
+            // btnPay
             // 
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button3.Location = new System.Drawing.Point(288, 6);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(110, 86);
-            this.button3.TabIndex = 1;
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnPay.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPay.BackgroundImage")));
+            this.btnPay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnPay.Location = new System.Drawing.Point(288, 6);
+            this.btnPay.Name = "btnPay";
+            this.btnPay.Size = new System.Drawing.Size(110, 86);
+            this.btnPay.TabIndex = 1;
+            this.btnPay.UseVisualStyleBackColor = true;
+            this.btnPay.Click += new System.EventHandler(this.btnPay_Click);
             // 
             // btnMember
             // 
@@ -205,7 +206,7 @@
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.btnMember);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnPay);
             this.Controls.Add(this.btnMoney);
             this.Controls.Add(this.btn_Bill);
             this.Controls.Add(this.menuStrip1);
@@ -231,7 +232,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.Button btn_Bill;
         private System.Windows.Forms.Button btnMoney;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnPay;
         private System.Windows.Forms.Button btnMember;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.SplitContainer splitContainer1;

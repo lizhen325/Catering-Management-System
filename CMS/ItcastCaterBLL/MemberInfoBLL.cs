@@ -54,5 +54,16 @@ namespace ItcastCater.BLL
             }
             return r > 0;
         }
+
+        /// <summary>
+        /// get member type by memberId
+        /// </summary>
+        /// <param name="memberId"></param>
+        /// <returns></returns>
+        /// 
+        public string GetMemberTypeByMemberId(int memberId)
+        {
+            return dal.GetMemberTypeNameByMemberId(memberId);
+        }
     }
 }

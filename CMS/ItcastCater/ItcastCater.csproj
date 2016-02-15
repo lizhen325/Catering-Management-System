@@ -52,6 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmBalance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBalance.Designer.cs">
+      <DependentUpon>FrmBalance.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAddMoney.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmAddMoney.resx">
       <DependentUpon>FrmAddMoney.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBalance.resx">
+      <DependentUpon>FrmBalance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmBilling.resx">
       <DependentUpon>FrmBilling.cs</DependentUpon>

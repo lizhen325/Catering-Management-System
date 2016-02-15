@@ -137,6 +137,18 @@ namespace ItcastCater.DAL
             return mem;
         }
 
+        /// <summary>
+        /// get member type by memberId
+        /// </summary>
+        /// <param name="memberId"></param>
+        /// <returns></returns>
+        public string GetMemberTypeNameByMemberId(int memberId)
+        {
+            string sql = "select MemTpName from MemmberType inner join MemmberInfo on MemmberInfo.MemType=MemmberType.MemType where MemmberId="+memberId;
+            return SqliteHelper.ExecuteSclar(sql).ToString();
+        }
+        
+
 
     }
 }

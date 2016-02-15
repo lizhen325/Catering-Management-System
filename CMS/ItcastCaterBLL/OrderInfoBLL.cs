@@ -44,5 +44,16 @@ namespace ItcastCater.BLL
         {
             dal.UpdateMoney(orderId, money);
         }
+
+        /// <summary>
+        /// get sum money based on orderId
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
+        /// 
+        public decimal GetSumMoney(int orderId)
+        {
+            return Convert.ToDecimal(dal.GetSumMoney(orderId));
+        }
     }
 }
