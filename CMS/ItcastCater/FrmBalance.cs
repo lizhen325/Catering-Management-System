@@ -74,6 +74,9 @@ namespace ItcastCater
                 labyeMoney.Text = mem.MemMoney.ToString();
                 //discount
                 lblDis.Text = mem.MemDiscount.ToString();
+
+                //show the money after discount
+                lblMoney.Text = (Convert.ToDecimal(labMoney.Text) * mem.MemDiscount / 10).ToString();
             }
             else
             {
