@@ -208,14 +208,10 @@ namespace ItcastCater
             if(this.evtFBalance != null)
             {
                 this.evtFBalance(this, meaFB);
+                fb.FormClosed += new FormClosedEventHandler(fbi_FormClosed);
                 fb.ShowDialog();
             }
             
         }
-
-      
-
-       
-
     }
 }

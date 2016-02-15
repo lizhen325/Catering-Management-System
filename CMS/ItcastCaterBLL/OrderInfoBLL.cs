@@ -55,5 +55,16 @@ namespace ItcastCater.BLL
         {
             return Convert.ToDecimal(dal.GetSumMoney(orderId));
         }
+
+        /// <summary>
+        /// update Order Info 
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        /// 
+        public bool UpdateOrderInfoMoney(OrderInfo order)
+        {
+            return dal.UpdateOrderInfoMoney(order) > 0;
+        }
     }
 }

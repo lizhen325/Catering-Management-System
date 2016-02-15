@@ -18,7 +18,7 @@ namespace ItcastCater.Model
         private string _memnum;
         private string _memgender;
         private decimal? _memdiscount = 1.00M;
-        private decimal? _memmoney = 0M;
+        private decimal _memmoney = 0M;
         private int? _delflag;
         private DateTime? _subtime;
         private int? _memintegral;
@@ -106,7 +106,7 @@ namespace ItcastCater.Model
         /// <summary>
         /// 会员余额
         /// </summary>
-        public decimal? MemMoney
+        public decimal MemMoney
         {
             set { _memmoney = value; }
             get { return _memmoney; }

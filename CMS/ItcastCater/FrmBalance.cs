@@ -18,10 +18,13 @@ namespace ItcastCater
         {
             InitializeComponent();
         }
+        private int deskId { get; set; }
         public void SetText(object sender, EventArgs e)
         {
             MyEventArgs mea = e as MyEventArgs;
             DeskInfo dk = mea.Obj as DeskInfo;
+            //store deskId
+            this.deskId = dk.DeskId;
             //DeskName
             labDeskName.Text = dk.DeskName;
             OrderInfoBLL bll = new OrderInfoBLL();
@@ -49,7 +52,7 @@ namespace ItcastCater
             R_OrderInfo_ProductBLL bll = new R_OrderInfo_ProductBLL();
             dgvAllPro.AutoGenerateColumns = false;
             dgvAllPro.DataSource = bll.GetROrderProduct(p);
-            dgvAllPro.SelectedRows[0].Selected = false;
+            //dgvAllPro.SelectedRows[0].Selected = false;
         }
 
         private void LoadMemberInfoDelFlag(int p)
@@ -85,6 +88,68 @@ namespace ItcastCater
                 lblDis.Text = "";
                 //show the bill money for non-member (no discount)
                 lblMoney.Text = labMoney.Text;
+            }
+        }
+
+        //Pay the bill
+        private void btnAccounts_Click(object sender, EventArgs e)
+        {
+            MemberInfo mem = cmbMemmber.SelectedItem as MemberInfo;
+            if(string.IsNullOrEmpty(txtMoney.Text))
+            {
+                MessageBox.Show("请输入钱");
+                return;
+            }
+            if(Convert.ToDecimal(txtMoney.Text) < Convert.ToDecimal(lblMoney.Text))
+            {
+                MessageBox.Show("就这点钱？ 搞笑呢");
+                return;
+            }
+            OrderInfo order = new OrderInfo();
+            //deskState in DeskInfo table
+            DeskInfoBLL bll = new DeskInfoBLL();
+            bool deskFlag = bll.UpdateDeskStateByDeskId(this.deskId, 0);
+            //non-member
+            if(cmbMemmber.SelectedIndex != 0)
+            {
+                order.OrderMemId = mem.MemmberId;
+                order.DisCount = Convert.ToDecimal(mem.MemDiscount);
+                //after pay in member money
+                decimal money = mem.MemMoney - Convert.ToDecimal(lblMoney.Text);
+                MemberInfoBLL mbll = new MemberInfoBLL();
+                //if(money < 0)
+                //{
+                
+                //}
+                //Member money in MemmberInfo table
+                bool memFlag = mbll.UpdateMoneyByMemId(mem.MemmberId, money);
+            }
+            order.EndTime = System.DateTime.Now;
+            order.OrderId = Convert.ToInt32(labOrderId.Text);
+            order.OrderMoney = Convert.ToDecimal(lblMoney.Text);
+            OrderInfoBLL obll = new OrderInfoBLL();
+            bool orderFlag = obll.UpdateOrderInfoMoney(order);
+            lblSpareMoney.Text = (Convert.ToDecimal(txtMoney.Text) - Convert.ToDecimal(lblMoney.Text)).ToString();
+            if(deskFlag && orderFlag)
+            {
+                MessageBox.Show("结账成功");
+            }
+            else
+            {
+                MessageBox.Show("失败");
+            }
+        }
+
+        //show the money change
+        private void txtMoney_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtMoney.Text))
+            {
+                lblSpareMoney.Text = (Convert.ToDecimal(txtMoney.Text) - Convert.ToDecimal(lblMoney.Text)).ToString();
+            }
+            else
+            {
+                lblSpareMoney.Text = "没付钱";
             }
         }
     }

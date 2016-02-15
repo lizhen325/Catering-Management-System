@@ -65,5 +65,27 @@ namespace ItcastCater.BLL
         {
             return dal.GetMemberTypeNameByMemberId(memberId);
         }
+
+        /// <summary>
+        /// update money By MemId
+        /// </summary>
+        /// <param name="memId"></param>
+        /// <returns></returns>
+        /// 
+        public bool UpdateMoneyByMemId(int memid, decimal money)
+        {
+            return dal.UpdateMoneyByMemId(memid, money) > 0;
+        }
+
+        /// <summary>
+        /// Get member Info by name or num
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="temp"></param>
+        /// <returns></returns>
+        public List<MemberInfo> GetMemberInfoByNameOrNum(string name, int temp)
+        {
+            return dal.GetMemberInfoByNameOrNum(name, temp);
+        }
     }
 }

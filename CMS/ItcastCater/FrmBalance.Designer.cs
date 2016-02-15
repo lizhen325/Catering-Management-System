@@ -142,6 +142,7 @@
             this.txtMoney.Name = "txtMoney";
             this.txtMoney.Size = new System.Drawing.Size(117, 22);
             this.txtMoney.TabIndex = 18;
+            this.txtMoney.TextChanged += new System.EventHandler(this.txtMoney_TextChanged);
             // 
             // btnAccounts
             // 
@@ -152,6 +153,7 @@
             this.btnAccounts.TabIndex = 17;
             this.btnAccounts.Text = "结账";
             this.btnAccounts.UseVisualStyleBackColor = true;
+            this.btnAccounts.Click += new System.EventHandler(this.btnAccounts_Click);
             // 
             // lblSpareMoney
             // 

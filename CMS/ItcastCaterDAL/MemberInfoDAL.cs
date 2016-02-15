@@ -147,8 +147,49 @@ namespace ItcastCater.DAL
             string sql = "select MemTpName from MemmberType inner join MemmberInfo on MemmberInfo.MemType=MemmberType.MemType where MemmberId="+memberId;
             return SqliteHelper.ExecuteSclar(sql).ToString();
         }
-        
 
+        /// <summary>
+        /// update money By MemId
+        /// </summary>
+        /// <param name="memId"></param>
+        /// <returns></returns>
+        public int UpdateMoneyByMemId(int memId, decimal money)
+        {
+            MemberInfo mem = new MemberInfo();
+            string sql = "update MemmberInfo set MemMoney=@MemMoney where DelFlag=0 and MemmberId=@MemmberId";
+            return SqliteHelper.ExecuteNonQuery(sql, new SQLiteParameter("@MemMoney", money), new SQLiteParameter("@MemmberId", memId));
+
+        }
+
+        /// <summary>
+        /// Get member Info by name or num
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="temp"></param>
+        /// <returns></returns>
+        public List<MemberInfo> GetMemberInfoByNameOrNum(string name,int temp)
+        {
+            List<MemberInfo> list = new List<MemberInfo>();
+            string sql = "select * from MemmberInfo where DelFlag=0";
+            if(temp == 1)
+            {
+                sql += " and MemName like @MemName";
+            }
+            else if(temp == 2)
+            {
+                sql += " and MemNum like @MemName";
+            }
+            DataTable dt = SqliteHelper.ExecuteTable(sql, new SQLiteParameter("@MemName", "%"+name+"%"));
+            if(dt.Rows.Count > 0)
+            {
+                foreach(DataRow dr in dt.Rows)
+                {
+                    list.Add(RowToMemberInfo(dr));
+                }
+            }
+            return list;
+        }
+        
 
     }
 }

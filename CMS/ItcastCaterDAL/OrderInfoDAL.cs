@@ -64,5 +64,23 @@ namespace ItcastCater.DAL
             return SqliteHelper.ExecuteSclar(sql, new SQLiteParameter("@OrderId", orderId));
 
         }
+
+        /// <summary>
+        /// update Order Info 
+        /// </summary>
+        /// <param name="order"></param>
+        /// <returns></returns>
+        public int UpdateOrderInfoMoney(OrderInfo order)
+        {
+            string sql = "update OrderInfo set OrderState=2, OrderMemId=@OrderMemId,EndTime=@EndTime,OrderMoney=@OrderMoney,DisCount=@Discount where OrderId=@OrderId";
+            SQLiteParameter[] ps ={
+                                     new SQLiteParameter("@OrderMemId",order.OrderMemId),
+                                     new SQLiteParameter("@EndTime",order.EndTime),
+                                     new SQLiteParameter("@OrderMoney",order.OrderMoney),
+                                     new SQLiteParameter("@DisCount",order.DisCount),
+                                     new SQLiteParameter("@OrderId",order.OrderId)
+                                 };
+            return SqliteHelper.ExecuteNonQuery(sql, ps);
+        }
     }
 }

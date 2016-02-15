@@ -97,5 +97,31 @@ namespace ItcastCater
         {
             LoadMemberInfoByDelFlag(0);
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            int n = 0;
+            if (string.IsNullOrEmpty(textBox1.Text))
+            {
+                LoadMemberInfoByDelFlag(0);
+                return;
+            }
+
+            if (char.IsDigit(textBox1.Text[0]))
+            {
+                n = 2;
+            }
+            else
+            {
+                n = 1;
+            }
+            MemberInfoBLL bll = new MemberInfoBLL();
+            dgvMemmber.AutoGenerateColumns = false;
+            dgvMemmber.DataSource = bll.GetMemberInfoByNameOrNum(textBox1.Text, n);
+            if (dgvMemmber.SelectedRows.Count > 0)
+            {
+                dgvMemmber.SelectedRows[0].Selected = false;
+            }
+        }
     }
 }

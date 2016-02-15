@@ -39,5 +39,7 @@ namespace ItcastCater.DAL
             mt.MemType = Convert.ToInt32(dr["MemType"]);
             return mt;
         }
+
+        
     }
 }
