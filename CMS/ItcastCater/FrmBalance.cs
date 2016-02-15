@@ -83,6 +83,8 @@ namespace ItcastCater
                 labTp.Text = "";
                 labyeMoney.Text = "";
                 lblDis.Text = "";
+                //show the bill money for non-member (no discount)
+                lblMoney.Text = labMoney.Text;
             }
         }
     }
