@@ -32,5 +32,26 @@ namespace ItcastCater.BLL
         {
             return dal.UpdateDeskStateByDeskId(deskId, state) > 0;
         }
+
+        /// <summary>
+        /// get all desk informatiion by delflag=0
+        /// </summary>
+        /// <param name="delFlag"></param>
+        /// <returns></returns>
+        /// 
+        public List<DeskInfo> GetAllDeskInfoByDelFlag(int delFlag)
+        {
+            return dal.GetAllDeskInfoByDelFlag(delFlag);
+        }
+
+        /// <summary>
+        /// get desk by roomId, estimate there is desk in the room
+        /// </summary>
+        /// <param name="roomId"></param>
+        /// <returns></returns>
+        public bool GetDeskCountByRoomId(int roomId)
+        {
+            return Convert.ToInt32(dal.GetDeskCountByRoomId(roomId)) > 0;
+        }
     }
 }

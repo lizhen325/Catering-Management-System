@@ -33,12 +33,12 @@ namespace ItcastCater.Model
             get { return _roomType; }
             set { _roomType = value; }
         }
-        private decimal _roomMinimumConsume;
+        private decimal? _roomMinimunConsume;
 
-        public decimal RoomMinimumConsume
+        public decimal? RoomMinimunConsume
         {
-            get { return _roomMinimumConsume; }
-            set { _roomMinimumConsume = value; }
+            get { return _roomMinimunConsume; }
+            set { _roomMinimunConsume = value; }
         }
         private int _roomMaxConsumer;
 

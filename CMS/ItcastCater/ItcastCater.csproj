@@ -88,6 +88,12 @@
     <Compile Include="FrmChangeProduct.Designer.cs">
       <DependentUpon>FrmChangeProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmChangeRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChangeRoom.Designer.cs">
+      <DependentUpon>FrmChangeRoom.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +111,12 @@
     </Compile>
     <Compile Include="FrmMemberInfo.Designer.cs">
       <DependentUpon>FrmMemberInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRoom.Designer.cs">
+      <DependentUpon>FrmRoom.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmUpdateMemberInfo.cs">
       <SubType>Form</SubType>
@@ -133,6 +145,9 @@
     <EmbeddedResource Include="FrmChangeProduct.resx">
       <DependentUpon>FrmChangeProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmChangeRoom.resx">
+      <DependentUpon>FrmChangeRoom.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMemberInfo.resx">
       <DependentUpon>FrmMemberInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRoom.resx">
+      <DependentUpon>FrmRoom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmUpdateMemberInfo.resx">
       <DependentUpon>FrmUpdateMemberInfo.cs</DependentUpon>

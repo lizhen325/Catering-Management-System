@@ -54,20 +54,24 @@ namespace ItcastCater
         // load desk
         private void LoadDeskInfoByRoomIdAndByTabPageIndex(TabPage tp)
         {
-            // RoomInfo object
-            RoomInfo r = tp.Tag as RoomInfo;
-            // ListView object
-            ListView lv = tp.Controls[0] as ListView;
-            lv.Clear();
-
-            DeskInfoBLL bll = new DeskInfoBLL();
-            //get deskinfo based on roomId
-            List<DeskInfo> listDesk = bll.GetAllDeskInfoByRoomId(r.RoomId);
-            for(int i=0; i<listDesk.Count; i++)
+            if(tp!=null)
             {
-                lv.Items.Add(listDesk[i].DeskName,listDesk[i].DeskState);
-                lv.Items[i].Tag = listDesk[i];
+                // RoomInfo object
+                RoomInfo r = tp.Tag as RoomInfo;
+                // ListView object
+                ListView lv = tp.Controls[0] as ListView;
+                lv.Clear();
+
+                DeskInfoBLL bll = new DeskInfoBLL();
+                //get deskinfo based on roomId
+                List<DeskInfo> listDesk = bll.GetAllDeskInfoByRoomId(r.RoomId);
+                for (int i = 0; i < listDesk.Count; i++)
+                {
+                    lv.Items.Add(listDesk[i].DeskName, listDesk[i].DeskState);
+                    lv.Items[i].Tag = listDesk[i];
+                }
             }
+           
         }
 
         private void LoadRoomInfoByDelFlag(int p)
@@ -128,7 +132,7 @@ namespace ItcastCater
             
             //RoomType, RoomMinimumConsume
             mea.Name = (tp.Tag as RoomInfo).RoomName;
-            mea.Money = (tp.Tag as RoomInfo).RoomMinimumConsume;
+            mea.Money =Convert.ToDecimal( (tp.Tag as RoomInfo).RoomMinimunConsume);
 
             this.evtFBI += new EventHandler(fb.SetText);
             if(this.evtFBI != null)
@@ -212,6 +216,22 @@ namespace ItcastCater
                 fb.ShowDialog();
             }
             
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            FrmRoom fr = new FrmRoom();
+            fr.FormClosed += new FormClosedEventHandler(fr_FormClosed);
+            fr.ShowDialog();
+            
+        }
+
+        private void fr_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            tabControl1.TabPages.Clear();
+            LoadRoomInfoByDelFlag(0);
+            LoadDeskInfoByRoomIdAndByTabPageIndex(tabControl1.TabPages[0]);
+            //tabControl1.SelectedIndexChanged += new EventHandler();
         }
     }
 }

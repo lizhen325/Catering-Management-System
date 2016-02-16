@@ -56,5 +56,36 @@ namespace ItcastCater.DAL
             string sql = "update DeskInfo set DeskState=@DeskState where DelFlag=0 and DeskId=@DeskId";
             return SqliteHelper.ExecuteNonQuery(sql, new SQLiteParameter("@DeskState", state), new SQLiteParameter("@DeskId", deskId));
         }
+
+        /// <summary>
+        /// get all desk informatiion by delflag=0
+        /// </summary>
+        /// <param name="delFlag"></param>
+        /// <returns></returns>
+        public List<DeskInfo> GetAllDeskInfoByDelFlag(int delFlag)
+        {
+            string sql = "select * from DeskInfo where DelFlag="+delFlag;
+            List<DeskInfo> list = new List<DeskInfo>();
+            DataTable dt = SqliteHelper.ExecuteTable(sql);
+            if(dt.Rows.Count>0)
+            {
+                foreach(DataRow item in dt.Rows)
+                {
+                    list.Add(RowToDeskInfo(item));
+                }
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// get desk by roomId, estimate there is desk in the room
+        /// </summary>
+        /// <param name="roomId"></param>
+        /// <returns></returns>
+        public object GetDeskCountByRoomId(int roomId)
+        {
+            string sql = "select count(*) from DeskInfo where RoomId=" + roomId;
+            return SqliteHelper.ExecuteSclar(sql);
+        }
     }
 }
